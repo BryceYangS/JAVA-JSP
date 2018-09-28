@@ -1,0 +1,17 @@
+CREATE TYPE seat_type IS OBJECT(
+	seatclass	VARCHAR2(9),
+	seatno		VARCHAR2(6),
+	pname		VARCHAR2(10)
+)
+
+CREATE TYPE seat_tab_type AS TABLE OF seat_type;
+
+CREATE TABLE concert(
+	id	VARCHAR2(10),
+	passwd	VARHCAR2(20),
+	name	VARCHAR2(20),
+	email	VARCHAR2(30),
+	tel	VARCHAR2(20),
+	seats	seat_tab_type)
+	NESTED TABLE seats
+		STORE AS seats_tab;
